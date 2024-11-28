@@ -1,25 +1,54 @@
 package estruturaDeDados;
 
 public class Lista {
+    public No cabeça;
+    public int tamanho;
 
     public Lista() {
-        // TODO Auto-generated constructor stub
-        throw new UnsupportedOperationException("Unimplemented constructor 'ListaCircular'");
+        this.cabeça = null;
+        this.tamanho = 0;
     }
 
     public void insereInicio(int i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insereInicio'");
+        No novoNo = new No(i);
+        if (tamanho==0){
+            novoNo.prx=null;
+            cabeça = novoNo;
+        }
+        else {
+            novoNo.prx = cabeça;
+            cabeça = novoNo;
+        }
+        tamanho++;
     }
 
     public boolean buscaElemento(int i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscaElemento'");
+        if(cabeça==null){
+            return false;
+        }
+        No nodavez = cabeça;
+        for(int n = 0; n <= tamanho; n++){
+            if (nodavez.valor == i){
+                return true;
+            }
+            else {
+                nodavez = nodavez.prx;
+            }
+        }
+        return false;
     }
 
     public Object buscaIndice(int i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscaIndice'");
+        if(i == 0){
+            return cabeça;
+        }
+        else {
+            No noDesejado = cabeça;
+            for(int n=1; n == i; i++){
+                noDesejado = noDesejado.prx;
+            }
+            return noDesejado;
+        }
     }
 
     public void insereFim(int i) {
